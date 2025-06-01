@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchData } from "./apiService";
 
-export default function CatFacts({name}) {
+export default function CatFacts({}) {
     const [data, setData] = useState([]
 
     )
@@ -17,10 +17,10 @@ export default function CatFacts({name}) {
     }
     load();
     console.log(data)
-  }, [name]);
+  }, []);
   return (
     <div>
-      <h1>{data.name}</h1>
+      <h1>{data.fact}</h1>
      
     </div>
   );
