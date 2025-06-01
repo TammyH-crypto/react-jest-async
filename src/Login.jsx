@@ -1,23 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function login() {
   const [user, setUser] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
-async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
-    setError(""); 
     try {
-     const res = await fetch("https:example.com/300x300")
-      if (user === "") {
-        throw new Error("Username cannot be empty");
-      }
-   
-      console.log("User logged in:", user);
-    } catch (err) {
-      setError(err.message); 
+      const res = await fetch("https://www.google.com");
+      const json = await res.json();
+      setMessage("Welcome, " + json.name);
+      console.log(json);
+    } catch (error) {
+      setMessage("Error:", error);
     }
-
+  }
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -27,10 +24,7 @@ async function handleSubmit(e){
         onChange={(e) => setUser(e.target.value)}
       />
       <button>Log in</button>
-      <div role="alert"></div>
-      {error && <div role="alert">{error}</div>}
-      <div role="status">Loading...</div>
+      {message && <div role="alert">{message}</div>}
     </form>
   );
-}
 }

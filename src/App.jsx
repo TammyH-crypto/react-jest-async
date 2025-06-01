@@ -1,14 +1,13 @@
+import "./App.css";
+import CatFacts from "./CatFacts";
 
-import './App.css'
 
 function App() {
-  
-
   return (
     <>
-     <h1>Hello</h1>
+      <CatFacts />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
